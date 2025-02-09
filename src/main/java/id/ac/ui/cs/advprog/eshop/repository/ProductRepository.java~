@@ -34,7 +34,7 @@ public class ProductRepository {
 
     public Product update(String productId, Product product) {
         Product existingProduct = productMap.get(productId);
-        if (existingProduct == null || product == null) {
+        if (existingProduct == null) {
             throw new RuntimeException("Product not found with id: " + productId);
         }
         existingProduct.setProductName(product.getProductName());
