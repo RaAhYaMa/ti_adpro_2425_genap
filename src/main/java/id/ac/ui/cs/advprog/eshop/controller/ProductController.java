@@ -58,4 +58,15 @@ public class ProductController {
         }
     }
 
+    @DeleteMapping("delete/{productId}")
+    public String deleteProduct(@PathVariable String productId) {
+        try {
+            service.delete(productId);
+            return "redirect:/product/list";
+        }
+        catch (RuntimeException e) {
+            return "redirect:/product/list";
+        }
+    }
+
 }
