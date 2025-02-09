@@ -43,7 +43,7 @@ public class ProductController {
             return "editProduct";
         }
         catch (RuntimeException e) {
-            return "redirect:list";
+            return "redirect:/product/list";
         }
     }
 
@@ -51,10 +51,10 @@ public class ProductController {
     public String editProductPost(@PathVariable String productId, @ModelAttribute Product product) {
         try {
             service.update(productId, product);
-            return "redirect:list";
+            return "redirect:/product/list";
         }
         catch (RuntimeException e) {
-            return "redirect:list";
+            return "redirect:/product/list";
         }
     }
 
