@@ -41,4 +41,14 @@ public class ProductRepository {
         existingProduct.setProductQuantity(product.getProductQuantity());
         return existingProduct;
     }
+
+    public Product delete(String productId) {
+        Product existingProduct = productMap.get(productId);
+        if (existingProduct == null) {
+            throw new RuntimeException("Product not found with id: " + productId);
+        }
+        productData.remove(existingProduct);
+        productMap.remove(productId);
+        return existingProduct;
+    }
 }
