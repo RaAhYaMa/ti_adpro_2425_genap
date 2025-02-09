@@ -10,4 +10,6 @@ public interface ProductService {
     public Product findByProductId(String productId);
 
     public Product update(String productId, Product product);
+
+    public Product delete(String productId);
 }
