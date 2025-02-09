@@ -35,4 +35,27 @@ public class ProductController {
         return "productList";
     }
 
+    @GetMapping("/edit/{productId}")
+    public String editProductPage(@PathVariable String productId, Model model) {
+        try {
+            Product product = service.findByProductId(productId);
+            model.addAttribute("product", product);
+            return "editProduct";
+        }
+        catch (RuntimeException e) {
+            return "redirect:list";
+        }
+    }
+
+    @PostMapping("edit/{productId}")
+    public String editProductPost(@PathVariable String productId, @ModelAttribute Product product) {
+        try {
+            service.update(productId, product);
+            return "redirect:list";
+        }
+        catch (RuntimeException e) {
+            return "redirect:list";
+        }
+    }
+
 }
