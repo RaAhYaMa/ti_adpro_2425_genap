@@ -28,4 +28,22 @@ class ProductTest {
     void testGetProductQuantity() {
         assertEquals(100, this.product.getProductQuantity());
     }
+
+    @Test
+    void testSetProductId() {
+        this.product.setProductId("a0f9de46-90b1-437d-a0bf-d0821dde9096");
+        assertEquals("a0f9de46-90b1-437d-a0bf-d0821dde9096", this.product.getProductId());
+    }
+
+    @Test
+    void testSetProductName() {
+        this.product.setProductName("Sampo Cap Usep");
+        assertEquals("Sampo Cap Usep", this.product.getProductName());
+    }
+
+    @Test
+    void testSetProductQuantity() {
+        this.product.setProductQuantity(50);
+        assertEquals(50, this.product.getProductQuantity());
+    }
 }
