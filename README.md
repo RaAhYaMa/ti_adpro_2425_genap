@@ -1,33 +1,27 @@
-**Reflection 3 on SOLID Principles Implementation**
-=============================================
+**Reflection 4 on TDD Workflow and F.I.R.S.T. Principle**
 
-**Principles Applied**
---------------------
+As I completed the Exercise using the Test-Driven Development (TDD) workflow, I took a step back to evaluate its effectiveness and reflect on the experience.
 
-In this project, I applied the SOLID principles to improve the design and maintainability of the codebase. The principles I applied are:
+**Evaluating TDD Workflow**
 
-* **SRP (Single Responsibility Principle)**: Each class has only one reason to change, i.e., each class has a single responsibility. For example, I split the `ProductController` and `CarController` into separate classes, each handling a specific responsibility.
-* **OCP (Open-Closed Principle)**: Classes are open to extension but closed to modification. For example, I created `CarService` and `ProductService` interfaces that are closed to modification but can be extended through implementation classes.
-* **LSP (Liskov Substitution Principle)**: Derived classes must be substitutable for their base classes. For example, I removed `CarController` as a subclass of `ProductController` to ensure that objects of the superclass can be replaced with objects of the subclass without affecting the correctness of the program.
-* **ISP (Interface Segregation Principle)**: Large interfaces are broken down into smaller, more specific interfaces so that clients only need to know the methods that are relevant to them.
-* **DIP (Dependency Inversion Principle)**: High-level modules do not depend on low-level modules, but both depend on abstractions. For example, I used `CarService` on `CarController` instead of using `CarServiceImpl` directly.
+Based on Percival's (2017) self-reflective questions:
 
-**Advantages of Applying SOLID Principles**
-------------------------------------------
+* Did the TDD workflow help me achieve my testing objectives?
+* Was the workflow efficient and effective in terms of time and resources?
+* Did the workflow improve the overall quality of my code?
 
-Applying SOLID principles to this project has several advantages, including:
+Upon reflection, I found that the TDD workflow was indeed useful in helping me achieve my testing objectives. By writing tests before writing code, I was able to ensure that my code met the required functionality and was testable. The workflow also helped me catch bugs and errors early on, which improved the overall quality of my code.
 
-* Improved maintainability: With each class having a single responsibility, it is easier to modify or extend the code without affecting other parts of the system.
-* Increased flexibility: The use of interfaces and abstraction allows for easier extension and modification of the code without affecting existing functionality.
-* Reduced coupling: By depending on abstractions rather than concrete implementations, high-level modules are decoupled from low-level modules, making it easier to change or replace either module without affecting the other.
+**Evaluating F.I.R.S.T. Principle**
 
-**Disadvantages of Not Applying SOLID Principles**
-------------------------------------------------
+When creating unit tests, I aimed to follow the F.I.R.S.T. principle, which stands for:
 
-Not applying SOLID principles to this project would have several disadvantages, including:
+* Fast: Tests should be fast and efficient
+* Independent: Tests should be independent of each other
+* Repeatable: Tests should produce consistent results
+* Self-validating: Tests should be self-validating and not require manual validation
+* Timely: Tests should be written in a timely manner, before the code is written
 
-* Tight coupling: Without the use of interfaces and abstraction, high-level modules would be tightly coupled to low-level modules, making it difficult to change or replace either module without affecting the other.
-* Reduced maintainability: With multiple responsibilities in a single class, it would be more difficult to modify or extend the code without affecting other parts of the system.
-* Increased fragility: Without the use of interfaces and abstraction, changes to the code would be more likely to break existing functionality, leading to a more fragile system.
+Upon reflection, I found that my tests mostly followed the F.I.R.S.T. principle. However, I did notice that some of my tests were not as fast and efficient as they could be, and I had to refactor them to improve performance and maintainability.
 
-By applying the SOLID principles, I was able to improve the design and maintainability of the codebase, making it more flexible, scalable, and easier to maintain.
+Overall, I found the TDD workflow and F.I.R.S.T. principle to be useful guidelines for writing effective unit tests.
