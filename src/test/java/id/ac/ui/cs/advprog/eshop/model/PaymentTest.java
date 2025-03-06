@@ -20,7 +20,7 @@ class PaymentTest {
         );
 
         assertEquals("123e4567-e89b-12d3-a456-426614174000", payment.getId());
-        assertEquals("Gopay", payment.getPaymentMethod());
+        assertEquals("Gopay", payment.getMethod());
         assertSame(paymentData, payment.getPaymentData());
     }
 
@@ -58,7 +58,7 @@ class PaymentTest {
         payment.setStatus("SUCCESS");
 
         assertEquals("123e4567-e89b-12d3-a456-426614174000", payment.getId());
-        assertEquals("Gopay", payment.getPaymentMethod());
+        assertEquals("Gopay", payment.getMethod());
         assertSame(paymentData, payment.getPaymentData());
         assertEquals("SUCCESS", payment.getStatus());
     }
