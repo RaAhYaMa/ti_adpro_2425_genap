@@ -47,6 +47,35 @@ class PaymentTest {
     }
 
     @Test
+    void testSetStatusIfValid() {
+        Map<String, String> paymentData = new HashMap<>();
+        paymentData.put("voucherCode", "ESHOP1234ABC5678");
+        Payment payment = new Payment(
+                "123e4567-e89b-12d3-a456-426614174000",
+                "Gopay",
+                paymentData
+        );
+        payment.setStatus("SUCCESS");
+
+        assertEquals("123e4567-e89b-12d3-a456-426614174000", payment.getId());
+        assertEquals("Gopay", payment.getPaymentMethod());
+        assertSame(paymentData, payment.getPaymentData());
+        assertEquals("SUCCESS", payment.getStatus());
+    }
+
+    @Test
+    void testFailSetStatusIfInvalid() {
+        Map<String, String> paymentData = new HashMap<>();
+        paymentData.put("voucherCode", "ESHOP1234ABC5678");
+        Payment payment = new Payment(
+                "123e4567-e89b-12d3-a456-426614174000",
+                "Gopay",
+                paymentData
+        );
+        assertThrows(IllegalArgumentException.class, () -> payment.setStatus("RANDOM"));
+    }
+
+    @Test
     void testFailCreatePaymentIfPaymentDataIsNull() {
         Map<String, String> paymentData = null;
         assertThrows(NullPointerException.class, () -> new Payment(
