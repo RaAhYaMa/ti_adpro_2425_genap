@@ -156,7 +156,7 @@ class PaymentRepositoryTest {
         List<Payment> resultPayments = paymentRepository.getAllPayments();
         assertEquals(payments, resultPayments);
         assertSame(resultPayments.get(0), payment1);
-        assertSame(resultPayments.get(1), payments);
+        assertSame(resultPayments.get(1), payment2);
     }
 
     @Test
