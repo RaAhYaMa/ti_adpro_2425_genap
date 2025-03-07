@@ -107,7 +107,7 @@ class PaymentRepositoryTest {
         paymentData.put("voucherCode", paymentDatas.get("voucherCode"));
 
         Payment payment = paymentRepository.addPayment(order, method, paymentData);
-        assertThrows(IllegalArgumentException.class, () -> paymentRepository.setStatus(payment, PaymentStatus.SUCCESS.getValue()));
+        assertThrows(IllegalArgumentException.class, () -> paymentRepository.setStatus(payment, "TK ANUM KELUAR"));
     }
 
     @Test
