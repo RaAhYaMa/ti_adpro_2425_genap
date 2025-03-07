@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -118,11 +119,12 @@ public class PaymentServiceImplTest {
     @Test
     public void testSetStatusSUCCESS() {
         Payment payment = payments.get(0);
+        payment.setStatus(PaymentStatus.SUCCESS.getValue());
         Order order = orders.get(0);
-        when(paymentRepository.getPayment(payment.getId())).thenReturn(payment);
-        when(paymentRepository.getOrder(payment.getId())).thenReturn(order);
+        order.setStatus(OrderStatus.SUCCESS.getValue());
+        when(paymentRepository.setStatus(payment, PaymentStatus.SUCCESS.getValue())).thenReturn(payment);
 
-        paymentService.setStatus(payment, PaymentStatus.SUCCESS.getValue());
+        payment = paymentService.setStatus(payment, PaymentStatus.SUCCESS.getValue());
 
         assertEquals(PaymentStatus.SUCCESS.getValue(), payment.getStatus());
         assertEquals(OrderStatus.SUCCESS.getValue(), order.getStatus());
@@ -131,9 +133,10 @@ public class PaymentServiceImplTest {
     @Test
     public void testSetStatusREJECTED() {
         Payment payment = payments.get(0);
+        payment.setStatus(PaymentStatus.REJECTED.getValue());
         Order order = orders.get(0);
-        when(paymentRepository.getPayment(payment.getId())).thenReturn(payment);
-        when(paymentRepository.getOrder(payment.getId())).thenReturn(order);
+        order.setStatus(OrderStatus.FAILED.getValue());
+        when(paymentRepository.setStatus(payment, PaymentStatus.REJECTED.getValue())).thenReturn(payment);
 
         paymentService.setStatus(payment, PaymentStatus.REJECTED.getValue());
 
@@ -155,8 +158,8 @@ public class PaymentServiceImplTest {
     @Test
     public void testGetPaymentNotFound() {
         Payment payment = payments.get(0);
-        String id = payment.getId()
-        when(paymentRepository.getPayment(id)).thenReturn(payment);
+        String id = payment.getId();
+        when(paymentRepository.getPayment(any(String.class))).thenReturn(null);
         id = id.charAt(0) == '0' ? '1' + id.substring(1) : '0' + id.substring(1);
 
         Payment result = paymentService.getPayment(id);
